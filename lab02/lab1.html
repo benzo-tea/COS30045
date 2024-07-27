@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="description" content="Data Visualisation"/> 
+<meta name="keywords" content="HTML, CSS, D3"/> 
+<meta name="author" content="Ben Tea"/>
+<title>Task 2.1 D3 Data Binding</title>
+<script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+<body>
+    <h1>The D3 Journey starts here...</h1>
+
+    <script>
+
+    var dataset =[14,5,26,23,9];
+
+    d3.select("body").selectAll("p")            // Within the body container
+    .data(dataset)                              
+    .enter()
+    .append("p")                                // Append a new <p>
+    // .text("New paragraph!");                    // Add to <p> the text "New paragraph!"
+    .text(function(d)   {
+            if (d < 10) {
+                return `Joe has watched ${d} cat videos today`;
+            }
+            else    {
+                return `Warning: Joe has watched ${d} cat videos today`;
+        }
+        })
+    .style("color", function(d) {
+        if (d < 10) {
+            return "black";
+            }
+        else    {
+            return "red";
+        }
+    });
+    
+    </script>
+    
+    <br>
+    </br>
+    
+    <footer style="color:grey">
+        COS30045 Data Visualisation<br>
+        2024 Teaching Period 2
+    </footer>
+</body>
+</html>
+
