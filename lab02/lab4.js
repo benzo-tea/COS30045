@@ -1,10 +1,9 @@
 function init () {
     var w = 500;
     var h = 150;
-    var padding = 2;
     var wombatSightings;
 
-    var svg = d3.select("body")
+    var svg = d3.select("#chart")
                 .append("svg")
                 .attr("width", w)
                 .attr("height", h);
@@ -17,7 +16,6 @@ function init () {
     });
 
     function barChart(wombatSightings) {
-        var barWidth = w/wombatSightings.length - padding;
 
         svg.selectAll("rect")
         .data (wombatSightings)
@@ -29,7 +27,7 @@ function init () {
         .attr("y", function(d)  {
             return h - (d.wombats * 4);
         })
-        .attr("width", barWidth)
+        .attr("width", w/wombatSightings.length - 2)
         .attr("height", function(d) {
             return (d.wombats * 4);
         })
